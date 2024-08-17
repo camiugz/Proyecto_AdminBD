@@ -68,7 +68,7 @@ CREATE TABLE Tareas (
     EmpleadoID INT,
     Descripcion VARCHAR(255) NOT NULL,
     FechaCumplimiento DATE NOT NULL,
-    Estado VARCHAR(20) CHECK (Estado IN ('Pendiente','Completada')),
+    Estado VARCHAR(20) CHECK (Estado IN ('Pendiente','En curso','Completada')),
     FOREIGN KEY (EventoID) REFERENCES Eventos(EventoID),
     FOREIGN KEY (EmpleadoID) REFERENCES Empleados(EmpleadoID)
 );
@@ -102,7 +102,7 @@ CREATE TABLE Pagos (
     TipoPago VARCHAR(20) CHECK (TipoPago IN ('Cliente','Proveedor')),
     ClienteID INT,
     ProveedorID INT,
-    MetodoPago VARCHAR(50) CHECK (MetodoPago IN ('Tarjeta de créditos','Transferencia bancaria','Efectivo')), 
+    MetodoPago VARCHAR(50) CHECK (MetodoPago IN ('Tarjeta de crédito','Transferencia bancaria','Efectivo')), 
     CONSTRAINT fkCliente
     FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID),
     CONSTRAINT fkProveedor
